@@ -80,4 +80,5 @@ public class Tests
         conversionTest.ExtractValue("i").Should().Be(1);
         conversionTest.ExtractValue("x").Should().Be(10);
     }
+    
 }
