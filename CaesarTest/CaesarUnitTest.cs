@@ -84,7 +84,7 @@ public class Tests
     [Test]
     public void ExtractValue_Should_Return_Sum_Of_The_All_RomanCharacters()
     {
-        //ExtractValue doesnt check the validity of Combination, it just extract the 'I' to 'M' and return the sum
+        //ExtractValue doesn't check the validity of Combination, it just extract the 'I' to 'M' and return the sum
         conversionTest.ExtractValue("b").Should().Be(0);
         conversionTest.ExtractValue("IIVcx").Should().Be(115);
         conversionTest.ExtractValue("ViIii").Should().Be(9);

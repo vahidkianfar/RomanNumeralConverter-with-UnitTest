@@ -10,12 +10,11 @@ public class Conversion
         UserInput = userInput.ToUpper();
     }
     
-    public bool RomanNumeralValidation(string userInput)
+    public bool RomanNumeralValidation(string UserInput)
     {
-        userInput=userInput.ToUpper();
         const string regularExpression = "^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
         Regex checkByRegex = new Regex(regularExpression);
-        return checkByRegex.IsMatch(userInput);
+        return checkByRegex.IsMatch(UserInput.ToUpper());
     }
     
     public int ConvertToTenBase(char romanChar)
@@ -31,17 +30,16 @@ public class Conversion
         return 0;
     }
 
-    public int ExtractValue(string userInput)
+    public int ExtractValue(string UserInput)
     {
-        userInput=userInput.ToUpper();
          int result = 0;
         int i = 0;
-        while (i < userInput.Length)
+        while (i < UserInput.Length)
         {
-            int firstTemp = ConvertToTenBase(userInput[i]);
-            if (i + 1 < userInput.Length)
+            int firstTemp = ConvertToTenBase(UserInput[i]);
+            if (i + 1 < UserInput.Length)
             {
-                int secondTemp = ConvertToTenBase(userInput[i + 1]);
+                int secondTemp = ConvertToTenBase(UserInput[i + 1]);
                 if (firstTemp >= secondTemp)
                 {
                     result += firstTemp;
@@ -64,10 +62,10 @@ public class Conversion
     
     public int PrintNumber(string userInput)
     {
-        string upperInput = userInput.ToUpper();
-        if (RomanNumeralValidation(upperInput) && String.IsNullOrEmpty(upperInput) == false)
+        userInput = userInput.ToUpper();
+        if (RomanNumeralValidation(userInput) && String.IsNullOrEmpty(userInput) == false)
         {
-            return ExtractValue(upperInput);
+            return ExtractValue(userInput);
         }
         return 0;
     }
