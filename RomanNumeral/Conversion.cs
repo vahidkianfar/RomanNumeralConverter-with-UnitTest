@@ -3,13 +3,11 @@ using System.Text.RegularExpressions;
 
 public class Conversion
 {
-    public string UserInput { get; set; }
-
     public Conversion(string userInput)
     {
         UserInput = userInput.ToUpper();
     }
-    
+    public string UserInput { get; set; }
     public bool RomanNumeralValidation(string UserInput)
     {
         const string regularExpression = "^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
@@ -31,8 +29,8 @@ public class Conversion
     }
 
     public int ExtractValue(string UserInput)
-    {
-         int result = 0;
+    { //I'm Working on a better Method, this is just a quick fix.
+        int result = 0;
         int i = 0;
         while (i < UserInput.Length)
         {
