@@ -1,4 +1,8 @@
-# RomanNumeralConverter-with-UnitTest
+There are Four different Methods:
+1. RomanNumeralValidation : "Using RegEx for Validity of the input number".
+2. ExtractValue : "Extract value of the each roman Characters from 'I' to 'M' and return the sum.
+3. ConvertToTenBase : "return int for every character to ExtractValue".
+4. PrintNumber : "Print the Final Number".
 
 Convert Roman Numerals into Base ten number system.
 
