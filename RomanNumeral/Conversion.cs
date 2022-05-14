@@ -17,6 +17,7 @@ public class Conversion
     
     public int ConvertToTenBase(char romanChar)
     {
+        // I will remove this method and use a Dictionary instead
         char upperRomanChar = Char.ToUpper(romanChar);
         if (upperRomanChar == 'I') return 1;
         if (upperRomanChar == 'V') return 5;
