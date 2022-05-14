@@ -9,7 +9,7 @@ while (true)
     else if (convert.PrintNumber(userInput)==0) 
         Console.WriteLine("\nInvalid Roman Numeral, Please Try Again!");
     else 
-        Console.WriteLine("\n----> The number is {0}", convert.PrintNumber(userInput));
+        Console.WriteLine("\n----> The number is: {0}", convert.PrintNumber(userInput));
 }
 
 
