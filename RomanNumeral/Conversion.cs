@@ -34,8 +34,7 @@ public class Conversion
     public int ExtractValue(string userInput)
     {
         userInput=userInput.ToUpper();
-        if (!RomanNumeralValidation(userInput)) return 0; //necessary for Unit Testing (Because we isolate this function)
-        int result = 0;
+         int result = 0;
         int i = 0;
         while (i < userInput.Length)
         {
