@@ -71,32 +71,13 @@ public class Tests
     }
     
     [Test]
-    public void ExtractValue_Should_Return_CorrectValue_For_Upper_RomanNumerals()
+    public void ExtractValue_Should_Return_CorrectValue_For_RomanNumerals()
     {
         conversionTest.ExtractValue("MMXXII").Should().Be(2022);
         conversionTest.ExtractValue("MMMCMXCIX").Should().Be(3999);
         conversionTest.ExtractValue("I").Should().Be(1);
         conversionTest.ExtractValue("X").Should().Be(10);
-    }
-    
-    [Test]
-    public void ExtractValue_Should_Return_CorrectValue_For_Lower_RomanNumerals()
-    {
-        conversionTest.ExtractValue("mmxxii").Should().Be(2022);
-        conversionTest.ExtractValue("mmmcmxcix").Should().Be(3999);
-        conversionTest.ExtractValue("i").Should().Be(1);
-        conversionTest.ExtractValue("x").Should().Be(10);
-    }
-
-    [Test]
-    public void ExtractValue_Should_Return_Sum_Of_The_All_RomanCharacters()
-    {
-        //ExtractValue doesn't check the validity of Combination, it just extract the 'I' to 'M' and return the sum
-        conversionTest.ExtractValue("b").Should().Be(0);
-        conversionTest.ExtractValue("IIVcx").Should().Be(115);
-        conversionTest.ExtractValue("ViIii").Should().Be(9);
-        conversionTest.ExtractValue("xXxXxXx").Should().Be(70);
-        conversionTest.ExtractValue("aaaMaaa").Should().Be(1000);
+        conversionTest.ExtractValue("DCCCLXXXVIII").Should().Be(888);
     }
 
     [Test]

@@ -11,7 +11,7 @@ public class Conversion
     public string UserInput { get; set; }
     
     readonly Dictionary<char, int> mappingCharacters = new()
-    {   { 'I', 1 },
+    {   { 'I' , 1 },
         { 'V', 5 },
         { 'X', 10 },
         { 'L', 50 },
@@ -37,36 +37,17 @@ public class Conversion
     }
 
     public int ExtractValue(string input)
-    { 
+    {
         int sum = 0;
-        int counter = 0;
-        while (counter < input.Length)
+        for (int counter = 0; counter < input.Length; counter++)
         {
-            int firstRomanChar  = mappingCharacters
-                .Where(x => x.Key == input.ToUpper().ToCharArray()[counter])
-                .Select(x => x.Value)
-                .FirstOrDefault();
-            if (counter + 1 < input.Length)
+            if (counter + 1 < input.Length && mappingCharacters[input[counter]] < mappingCharacters[input[counter + 1]])
             {
-                int secondRomanChar = mappingCharacters
-                    .Where(x => x.Key == input.ToUpper().ToCharArray()[counter+1])
-                    .Select(x => x.Value)
-                    .FirstOrDefault();
-                if (firstRomanChar >= secondRomanChar)
-                {
-                    sum += firstRomanChar;
-                    counter++;
-                }
-                else
-                {
-                    sum += secondRomanChar - firstRomanChar;
-                    counter += 2;
-                }
+                sum -= mappingCharacters[input[counter]];
             }
             else
             {
-                sum += firstRomanChar;
-                counter++;
+                sum += mappingCharacters[input[counter]];
             }
         }
         return sum;
