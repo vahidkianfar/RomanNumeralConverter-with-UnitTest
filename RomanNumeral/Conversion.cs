@@ -1,5 +1,6 @@
 ﻿namespace RomanNumeral;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 public class Conversion
 {
@@ -8,7 +9,8 @@ public class Conversion
         UserInput = userInput.ToUpper();
     }
     public string UserInput { get; set; }
-    Dictionary<char, int> mappingCharacters = new()
+    
+    readonly Dictionary<char, int> mappingCharacters = new()
     { { 'I', 1 },
         { 'V', 5 },
         { 'X', 10 },
@@ -17,55 +19,48 @@ public class Conversion
         { 'D', 500 },
         { 'M', 1000 }
     };
-    public bool RomanNumeralValidation(string UserInput)
+    public bool RomanNumeralValidation(string userInput)
     {
         const string regularExpression = "^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
         Regex checkByRegex = new Regex(regularExpression);
-        return checkByRegex.IsMatch(UserInput.ToUpper());
-    }
-    
-    public int ConvertToTenBase(char romanChar)
-    {
-        // I will remove this method and use a Dictionary instead
-        char upperRomanChar = Char.ToUpper(romanChar);
-        if (upperRomanChar == 'I') return 1;
-        if (upperRomanChar == 'V') return 5;
-        if (upperRomanChar == 'X') return 10;
-        if (upperRomanChar == 'L') return 50;
-        if (upperRomanChar == 'C') return 100;
-        if (upperRomanChar == 'D') return 500;
-        if (upperRomanChar == 'M') return 1000;
-        return 0;
+        return checkByRegex.IsMatch(userInput.ToUpper());
     }
 
-    public int ExtractValue(string UserInput)
-    { //I'm Working on a better Method, this is just a quick fix.
-        int result = 0;
-        int i = 0;
-        while (i < UserInput.Length)
+    public int ExtractValue(string userInput)
+    { 
+        int sum = 0;
+        int counter = 0;
+        while (counter < userInput.Length)
         {
-            int firstTemp = ConvertToTenBase(UserInput[i]);
-            if (i + 1 < UserInput.Length)
+            int firstRomanChar  = mappingCharacters
+                .Where(x => x.Key == userInput.ToUpper().ToCharArray()[counter])
+                .Select(x => x.Value)
+                .FirstOrDefault();
+            
+            if (counter + 1 < userInput.Length)
             {
-                int secondTemp = ConvertToTenBase(UserInput[i + 1]);
-                if (firstTemp >= secondTemp)
+                int secondRomanChar = mappingCharacters
+                    .Where(x => x.Key == userInput.ToUpper().ToCharArray()[counter+1])
+                    .Select(x => x.Value)
+                    .FirstOrDefault();
+                if (firstRomanChar >= secondRomanChar)
                 {
-                    result += firstTemp;
-                    i++;
+                    sum += firstRomanChar;
+                    counter++;
                 }
                 else
                 {
-                    result = result + secondTemp - firstTemp;
-                    i += 2;
+                    sum += secondRomanChar - firstRomanChar;
+                    counter += 2;
                 }
             }
             else
             {
-                result += firstTemp;
-                i++;
+                sum += firstRomanChar;
+                counter++;
             }
         }
-        return result;
+        return sum;
     }
     
     public int PrintNumber(string userInput)
