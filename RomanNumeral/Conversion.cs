@@ -10,8 +10,8 @@ public class Conversion
     }
     public string UserInput { get; set; }
     
-    readonly Dictionary<char, int> _mappingCharacters = new()
-    { { 'I', 1 },
+    readonly Dictionary<char, int> mappingCharacters = new()
+    {   { 'I', 1 },
         { 'V', 5 },
         { 'X', 10 },
         { 'L', 50 },
@@ -42,13 +42,13 @@ public class Conversion
         int counter = 0;
         while (counter < userInput.Length)
         {
-            int firstRomanChar  = _mappingCharacters
+            int firstRomanChar  = mappingCharacters
                 .Where(x => x.Key == userInput.ToUpper().ToCharArray()[counter])
                 .Select(x => x.Value)
                 .FirstOrDefault();
             if (counter + 1 < userInput.Length)
             {
-                int secondRomanChar = _mappingCharacters
+                int secondRomanChar = mappingCharacters
                     .Where(x => x.Key == userInput.ToUpper().ToCharArray()[counter+1])
                     .Select(x => x.Value)
                     .FirstOrDefault();
