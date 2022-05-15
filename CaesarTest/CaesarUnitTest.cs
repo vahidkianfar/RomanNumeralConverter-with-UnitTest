@@ -7,6 +7,7 @@ namespace CaesarTest;
 public class Tests
 {
     private Conversion  conversionTest;
+    
     [SetUp]
     public void Setup()
     {
@@ -21,6 +22,7 @@ public class Tests
         conversionTest.PrintNumber("I").Should().Be(1);
         conversionTest.PrintNumber("X").Should().Be(10);
     }
+    
     [Test]
     public void PrintNumber_Should_Return_CorrectValue_For_Lower_RomanNumerals()
     {
@@ -29,6 +31,7 @@ public class Tests
         conversionTest.PrintNumber("i").Should().Be(1);
         conversionTest.PrintNumber("x").Should().Be(10);
     }
+    
     [Test]
     public void PrintNumber_Should_Return_CorrectValue_For_Mixed_RomanNumerals()
     {
@@ -37,6 +40,7 @@ public class Tests
         conversionTest.PrintNumber("DccXxix").Should().Be(729);
         
     }
+    
     [Test]
     public void PrintNumber_Should_Return_ZERO_For_Wrong_RomanNumerals()
     {
@@ -74,6 +78,7 @@ public class Tests
         conversionTest.ExtractValue("I").Should().Be(1);
         conversionTest.ExtractValue("X").Should().Be(10);
     }
+    
     [Test]
     public void ExtractValue_Should_Return_CorrectValue_For_Lower_RomanNumerals()
     {
@@ -114,5 +119,4 @@ public class Tests
         conversionTest.RomanNumeralValidation("MccccmXxII").Should().Be(false);
         conversionTest.RomanNumeralValidation("viIii").Should().Be(false);
     }
-    
 }
