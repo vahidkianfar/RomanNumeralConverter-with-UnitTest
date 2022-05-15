@@ -21,7 +21,8 @@ public class Conversion
     };
     public bool RomanNumeralValidation(string userInput)
     {
-        const string regularExpression = "^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
+        const string regularExpression = 
+            "^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
         Regex checkByRegex = new Regex(regularExpression);
         return checkByRegex.IsMatch(userInput.ToUpper());
     }
@@ -36,7 +37,6 @@ public class Conversion
                 .Where(x => x.Key == userInput.ToUpper().ToCharArray()[counter])
                 .Select(x => x.Value)
                 .FirstOrDefault();
-            
             if (counter + 1 < userInput.Length)
             {
                 int secondRomanChar = mappingCharacters
