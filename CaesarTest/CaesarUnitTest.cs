@@ -11,15 +11,14 @@ public class Tests
     public void Setup() { }
     
     [Test]
-    public void ExtractValue_Should_Throw_Exception_For_Invalid_Input()
+    public void ExtractValue_Should_Throw_Exception_For_Input_That_Doesnt_Exist_In_Dictionary()
     {
         Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() => Conversion.ExtractValue("bf"));
-        Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() => Conversion.ExtractValue("ib"));
-        Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() => Conversion.ExtractValue("mi6"));
+        Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() => Conversion.ExtractValue("i")); //LowerCase of I doesn't exist in Dictionary
     }
     
     [Test]
-    public void ExtractValue_Should_Throw_Exception_For_NULL()
+    public void ExtractValue_Should_Throw_Exception_For_Attempting_To_Dereference_Null_Object()
     {
         Assert.Throws<NullReferenceException>(() => Conversion.ExtractValue(null));
     }
@@ -35,7 +34,7 @@ public class Tests
     }
     
     [Test]
-    public void PrintNumber_Should_Throw_Exception_For_NULL()
+    public void PrintNumber_Should_Throw_Exception_For_Attempting_To_Dereference_Null_Object()
     {
         Assert.Throws<NullReferenceException>(() => Conversion.PrintNumber(null));
     }
@@ -108,7 +107,7 @@ public class Tests
     }
 
     [Test]
-    public void RomanNumeralValidation_Should_Throw_Exception_For_NULL()
+    public void RomanNumeralValidation_Should_Throw_Exception_For_Attempting_To_Dereference_Null_Object()
     {
         Assert.Throws<NullReferenceException>(() => Conversion.RomanNumeralValidation(null));
     }
