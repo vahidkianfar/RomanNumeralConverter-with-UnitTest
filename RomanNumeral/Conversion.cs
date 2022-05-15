@@ -35,18 +35,18 @@ public class Conversion
 
     public static int ExtractValue(string input)
     {
-        int sum = 0;
+        int calculateNumber = 0;
         for (int counter = 0; counter < input.Length; counter++)
         {
             if (counter + 1 < input.Length && mappingCharacters[input[counter]] < mappingCharacters[input[counter + 1]])
             {
-                sum -= mappingCharacters[input[counter]];
+                calculateNumber -= mappingCharacters[input[counter]];
             }
             else
             {
-                sum += mappingCharacters[input[counter]];
+                calculateNumber += mappingCharacters[input[counter]];
             }
         }
-        return sum;
+        return calculateNumber;
     }
 }
