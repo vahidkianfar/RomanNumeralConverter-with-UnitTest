@@ -2,6 +2,7 @@ using System;
 using NUnit.Framework;
 using FluentAssertions;
 using RomanNumeral;
+
 namespace CaesarTest;
 
 public class Tests
@@ -18,6 +19,12 @@ public class Tests
     }
     
     [Test]
+    public void ExtractValue_Should_Throw_Exception_For_NULL()
+    {
+        Assert.Throws<NullReferenceException>(() => Conversion.ExtractValue(null));
+    }
+    
+    [Test]
     public void ExtractValue_Should_Return_CorrectValue_For_RomanNumerals()
     {
         Conversion.ExtractValue("MMXXII").Should().Be(2022);
@@ -25,6 +32,12 @@ public class Tests
         Conversion.ExtractValue("I").Should().Be(1);
         Conversion.ExtractValue("X").Should().Be(10);
         Conversion.ExtractValue("DCCCLXXXVIII").Should().Be(888);
+    }
+    
+    [Test]
+    public void PrintNumber_Should_Throw_Exception_For_NULL()
+    {
+        Assert.Throws<NullReferenceException>(() => Conversion.PrintNumber(null));
     }
 
     [Test]
@@ -94,6 +107,11 @@ public class Tests
         Conversion.PrintNumber("exit").Should().Be(0);
     }
 
+    [Test]
+    public void RomanNumeralValidation_Should_Throw_Exception_For_NULL()
+    {
+        Assert.Throws<NullReferenceException>(() => Conversion.RomanNumeralValidation(null));
+    }
     
     [Test]
     public void RomanNumeralValidation_Should_Return_TRUE_For_Valid_MIXED_RomanNumeral()
