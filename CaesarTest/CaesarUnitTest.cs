@@ -106,9 +106,17 @@ public class Tests
     {
         conversionTest.RomanNumeralValidation("MiiIiX").Should().Be(false);
         conversionTest.RomanNumeralValidation("vvMIX").Should().Be(false);
-        conversionTest.RomanNumeralValidation("Ib").Should().Be(false);
-        conversionTest.RomanNumeralValidation("IyyI").Should().Be(false);
+        conversionTest.RomanNumeralValidation("IiiiiII").Should().Be(false);
         conversionTest.RomanNumeralValidation("MccccmXxII").Should().Be(false);
         conversionTest.RomanNumeralValidation("viIii").Should().Be(false);
+    }
+    [Test]
+    public void RomanNumeralValidation_Should_Return_FALSE_For_inValid_Input()
+    {
+        conversionTest.RomanNumeralValidation("123").Should().Be(false);
+        conversionTest.RomanNumeralValidation("Hi!").Should().Be(false);
+        conversionTest.RomanNumeralValidation("__@#").Should().Be(false);
+        conversionTest.RomanNumeralValidation("Injection!").Should().Be(false);
+        conversionTest.RomanNumeralValidation("()*").Should().Be(false);
     }
 }
