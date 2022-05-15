@@ -25,7 +25,10 @@ public class Conversion
     public static bool RomanNumeralValidation(string input)
     {
         const string regularExpression = 
-            "^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
+            "^M{0,3}" +
+            "(CM|CD|D?C{0,3})" +
+            "(XC|XL|L?X{0,3})" +
+            "(IX|IV|V?I{0,3})$";
         Regex checkByRegex = new Regex(regularExpression);
         return checkByRegex.IsMatch(input.ToUpper());
     }
