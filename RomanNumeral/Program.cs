@@ -2,8 +2,8 @@
 
 while (true)
 {
-    Console.Write("\nEnter a Roman Numeral (type \"exit\" to quit):"); 
-    var userInput = Console.ReadLine().ToUpper();
+    Console.Write("\nEnter a Roman Numeral (type \"exit\" to quit):");
+    var userInput = Console.ReadLine().ToUpper() ?? "";
     var convert = new Conversion(userInput);
     if (userInput == "EXIT") Environment.Exit(0);
     else if (convert.PrintNumber(userInput)==0) 

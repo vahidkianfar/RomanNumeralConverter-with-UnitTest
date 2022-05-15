@@ -43,6 +43,8 @@ public class Tests
         conversionTest.PrintNumber("MMIIXX").Should().Be(0);
         conversionTest.PrintNumber("mmiixx").Should().Be(0);
         conversionTest.PrintNumber("VIIIV").Should().Be(0);
+        conversionTest.PrintNumber("EXIT").Should().Be(0);
+        conversionTest.PrintNumber("exit").Should().Be(0);
         conversionTest.PrintNumber("iiiiiii").Should().Be(0);
     }
     
