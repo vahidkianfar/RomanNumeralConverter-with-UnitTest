@@ -10,6 +10,3 @@ while (true)
     else 
         Console.WriteLine("\n----> The number is: {0}", Conversion.PrintNumber(userInput));
 }
-
-
-

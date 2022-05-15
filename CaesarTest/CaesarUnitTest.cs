@@ -1,8 +1,6 @@
 using NUnit.Framework;
 using FluentAssertions;
-using static FluentAssertions.FluentActions;
 using RomanNumeral;
-
 namespace CaesarTest;
 
 public class Tests

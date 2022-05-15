@@ -3,12 +3,6 @@ using System.Text.RegularExpressions;
 
 public class Conversion
 {
-    public Conversion(string userInput)
-    {
-        UserInput = userInput.ToUpper();
-    }
-    public string UserInput { get; set; }
-    
     static readonly Dictionary<char, int> mappingCharacters = new()
     {   { 'I', 1 },
         { 'V', 5 },
@@ -18,6 +12,7 @@ public class Conversion
         { 'D', 500 },
         { 'M', 1000 }
     };
+    
     public static int PrintNumber(string input)
     {
         if (RomanNumeralValidation(input.ToUpper()) && String.IsNullOrEmpty(input) == false)
