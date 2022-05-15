@@ -24,7 +24,7 @@ public class Conversion
     
     public static bool RomanNumeralValidation(string input)
     {
-        const string regularExpression = 
+        const string regularExpression =
             "^M{0,3}" +
             "(CM|CD|D?C{0,3})" +
             "(XC|XL|L?X{0,3})" +
