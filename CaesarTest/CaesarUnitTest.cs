@@ -21,6 +21,7 @@ public class Tests
         conversionTest.PrintNumber("MMMCMXCIX").Should().Be(3999);
         conversionTest.PrintNumber("I").Should().Be(1);
         conversionTest.PrintNumber("X").Should().Be(10);
+        conversionTest.PrintNumber("DCCCLXXXVIII").Should().Be(888);
     }
     
     [Test]
@@ -38,6 +39,7 @@ public class Tests
         conversionTest.PrintNumber("mMXiI").Should().Be(2012);
         conversionTest.PrintNumber("mMmCMxcix").Should().Be(3999);
         conversionTest.PrintNumber("DccXxix").Should().Be(729);
+        conversionTest.PrintNumber("DCcClXxXViii").Should().Be(888);
         
     }
     
@@ -47,8 +49,6 @@ public class Tests
         conversionTest.PrintNumber("MMIIXX").Should().Be(0);
         conversionTest.PrintNumber("mmiixx").Should().Be(0);
         conversionTest.PrintNumber("VIIIV").Should().Be(0);
-        conversionTest.PrintNumber("EXIT").Should().Be(0);
-        conversionTest.PrintNumber("exit").Should().Be(0);
         conversionTest.PrintNumber("iiiiiii").Should().Be(0);
     }
     
@@ -68,6 +68,17 @@ public class Tests
         conversionTest.PrintNumber("mmmcmxcix-mmmcmxcix").Should().Be(0);
         conversionTest.PrintNumber("i-i").Should().Be(0);
         conversionTest.PrintNumber("x-x").Should().Be(0);
+    }
+    [Test]
+    public void PrintNumber_Should_Return_ZERO_For_Wrong_Input()
+    {
+        
+        conversionTest.PrintNumber("").Should().Be(0);
+        conversionTest.PrintNumber("@#__").Should().Be(0);
+        conversionTest.PrintNumber("VC!@$#").Should().Be(0);
+        conversionTest.PrintNumber("hello").Should().Be(0);
+        conversionTest.PrintNumber("EXIT").Should().Be(0);
+        conversionTest.PrintNumber("exit").Should().Be(0);
     }
     
     [Test]
