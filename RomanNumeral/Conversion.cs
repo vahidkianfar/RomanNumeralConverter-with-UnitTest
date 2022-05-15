@@ -19,37 +19,36 @@ public class Conversion
         { 'D', 500 },
         { 'M', 1000 }
     };
-    public int PrintNumber(string userInput)
+    public int PrintNumber(string input)
     {
-        userInput = userInput.ToUpper();
-        if (RomanNumeralValidation(userInput) && String.IsNullOrEmpty(userInput) == false)
+        if (RomanNumeralValidation(input.ToUpper()) && String.IsNullOrEmpty(input) == false)
         {
-            return ExtractValue(userInput);
+            return ExtractValue(input.ToUpper());
         }
         return 0;
     }
-    public bool RomanNumeralValidation(string userInput)
+    public bool RomanNumeralValidation(string input)
     {
         const string regularExpression = 
             "^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
         Regex checkByRegex = new Regex(regularExpression);
-        return checkByRegex.IsMatch(userInput.ToUpper());
+        return checkByRegex.IsMatch(input.ToUpper());
     }
 
-    public int ExtractValue(string userInput)
+    public int ExtractValue(string input)
     { 
         int sum = 0;
         int counter = 0;
-        while (counter < userInput.Length)
+        while (counter < input.Length)
         {
             int firstRomanChar  = mappingCharacters
-                .Where(x => x.Key == userInput.ToUpper().ToCharArray()[counter])
+                .Where(x => x.Key == input.ToUpper().ToCharArray()[counter])
                 .Select(x => x.Value)
                 .FirstOrDefault();
-            if (counter + 1 < userInput.Length)
+            if (counter + 1 < input.Length)
             {
                 int secondRomanChar = mappingCharacters
-                    .Where(x => x.Key == userInput.ToUpper().ToCharArray()[counter+1])
+                    .Where(x => x.Key == input.ToUpper().ToCharArray()[counter+1])
                     .Select(x => x.Value)
                     .FirstOrDefault();
                 if (firstRomanChar >= secondRomanChar)
