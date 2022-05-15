@@ -25,10 +25,10 @@ public class Conversion
     public static bool RomanNumeralValidation(string input)
     {
         const string regularExpression =
-            "^M{0,3}" +
-            "(CM|CD|D?C{0,3})" +
-            "(XC|XL|L?X{0,3})" +
-            "(IX|IV|V?I{0,3})$";
+            "^M{0,3}" + //Zero to Three occurrence of M
+            "(CM|CD|D?C{0,3})" + //CM or CD or Zero to Three occurrence of D or C
+            "(XC|XL|L?X{0,3})" + //XC or XL or Zero to Three occurrence of L or X
+            "(IX|IV|V?I{0,3})$"; //IX or IV or Zero to Three occurrence of V or I
         Regex checkByRegex = new Regex(regularExpression);
         return checkByRegex.IsMatch(input.ToUpper());
     }
