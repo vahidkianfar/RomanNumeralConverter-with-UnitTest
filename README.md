@@ -1,7 +1,6 @@
-There are Four different Methods:
+There are Three different Methods:
 1. RomanNumeralValidation : "Using RegEx for Validity of the input Roman Numeral".
-2. ExtractValue : "Extract value of the each roman Characters from 'I' to 'M' and return the Sum.
-3. ConvertToTenBase : "return int for every character to ExtractValue".
+2. ExtractValue : "Extract value of the each Roman Characters from a Dictionary and return the Sum.
 4. PrintNumber : "Print the Final Number".
 
 Convert Roman Numerals into Base ten number system.
