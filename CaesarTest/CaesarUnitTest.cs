@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using FluentAssertions;
 using RomanNumeral;
@@ -7,6 +8,24 @@ public class Tests
 {
     [SetUp]
     public void Setup() { }
+    
+    [Test]
+    public void ExtractValue_Should_Throw_Exception_For_Invalid_Input()
+    {
+        Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() => Conversion.ExtractValue("bf"));
+        Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() => Conversion.ExtractValue("ib"));
+        Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() => Conversion.ExtractValue("mi6"));
+    }
+    
+    [Test]
+    public void ExtractValue_Should_Return_CorrectValue_For_RomanNumerals()
+    {
+        Conversion.ExtractValue("MMXXII").Should().Be(2022);
+        Conversion.ExtractValue("MMMCMXCIX").Should().Be(3999);
+        Conversion.ExtractValue("I").Should().Be(1);
+        Conversion.ExtractValue("X").Should().Be(10);
+        Conversion.ExtractValue("DCCCLXXXVIII").Should().Be(888);
+    }
 
     [Test]
     public void PrintNumber_Should_Return_CorrectValue_For_Upper_RomanNumerals()
@@ -74,17 +93,8 @@ public class Tests
         Conversion.PrintNumber("EXIT").Should().Be(0);
         Conversion.PrintNumber("exit").Should().Be(0);
     }
-    
-    [Test]
-    public void ExtractValue_Should_Return_CorrectValue_For_RomanNumerals()
-    {
-        Conversion.ExtractValue("MMXXII").Should().Be(2022);
-        Conversion.ExtractValue("MMMCMXCIX").Should().Be(3999);
-        Conversion.ExtractValue("I").Should().Be(1);
-        Conversion.ExtractValue("X").Should().Be(10);
-        Conversion.ExtractValue("DCCCLXXXVIII").Should().Be(888);
-    }
 
+    
     [Test]
     public void RomanNumeralValidation_Should_Return_TRUE_For_Valid_MIXED_RomanNumeral()
     {
