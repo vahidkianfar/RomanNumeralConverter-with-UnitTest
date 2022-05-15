@@ -19,6 +19,15 @@ public class Conversion
         { 'D', 500 },
         { 'M', 1000 }
     };
+    public int PrintNumber(string userInput)
+    {
+        userInput = userInput.ToUpper();
+        if (RomanNumeralValidation(userInput) && String.IsNullOrEmpty(userInput) == false)
+        {
+            return ExtractValue(userInput);
+        }
+        return 0;
+    }
     public bool RomanNumeralValidation(string userInput)
     {
         const string regularExpression = 
@@ -61,15 +70,5 @@ public class Conversion
             }
         }
         return sum;
-    }
-    
-    public int PrintNumber(string userInput)
-    {
-        userInput = userInput.ToUpper();
-        if (RomanNumeralValidation(userInput) && String.IsNullOrEmpty(userInput) == false)
-        {
-            return ExtractValue(userInput);
-        }
-        return 0;
     }
 }
