@@ -9,8 +9,8 @@ public class Conversion
     }
     public string UserInput { get; set; }
     
-    readonly Dictionary<char, int> mappingCharacters = new()
-    {   { 'I' , 1 },
+    static readonly Dictionary<char, int> mappingCharacters = new()
+    {   { 'I', 1 },
         { 'V', 5 },
         { 'X', 10 },
         { 'L', 50 },
@@ -18,7 +18,7 @@ public class Conversion
         { 'D', 500 },
         { 'M', 1000 }
     };
-    public int PrintNumber(string input)
+    public static int PrintNumber(string input)
     {
         if (RomanNumeralValidation(input.ToUpper()) && String.IsNullOrEmpty(input) == false)
         {
@@ -27,7 +27,7 @@ public class Conversion
         return 0;
     }
     
-    public bool RomanNumeralValidation(string input)
+    public static bool RomanNumeralValidation(string input)
     {
         const string regularExpression = 
             "^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
@@ -35,7 +35,7 @@ public class Conversion
         return checkByRegex.IsMatch(input.ToUpper());
     }
 
-    public int ExtractValue(string input)
+    public static int ExtractValue(string input)
     {
         int sum = 0;
         for (int counter = 0; counter < input.Length; counter++)

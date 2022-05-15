@@ -1,122 +1,120 @@
 using NUnit.Framework;
 using FluentAssertions;
+using static FluentAssertions.FluentActions;
 using RomanNumeral;
 
 namespace CaesarTest;
 
 public class Tests
 {
-    private Conversion  conversionTest;
-    
     [SetUp]
-    public void Setup()
-    {
-        conversionTest = new Conversion("CaesarUnitTest");
-    }
+    public void Setup() { }
 
     [Test]
     public void PrintNumber_Should_Return_CorrectValue_For_Upper_RomanNumerals()
     {
-        conversionTest.PrintNumber("MMXXII").Should().Be(2022);
-        conversionTest.PrintNumber("MMMCMXCIX").Should().Be(3999);
-        conversionTest.PrintNumber("I").Should().Be(1);
-        conversionTest.PrintNumber("X").Should().Be(10);
-        conversionTest.PrintNumber("DCCCLXXXVIII").Should().Be(888);
+        Conversion.PrintNumber("MMXXII").Should().Be(2022);
+        Conversion.PrintNumber("MMMCMXCIX").Should().Be(3999);
+        Conversion.PrintNumber("I").Should().Be(1);
+        Conversion.PrintNumber("X").Should().Be(10);
+        Conversion.PrintNumber("DCCCLXXXVIII").Should().Be(888);
     }
     
     [Test]
     public void PrintNumber_Should_Return_CorrectValue_For_Lower_RomanNumerals()
     {
-        conversionTest.PrintNumber("mmxxii").Should().Be(2022);
-        conversionTest.PrintNumber("mmmcmxcix").Should().Be(3999);
-        conversionTest.PrintNumber("i").Should().Be(1);
-        conversionTest.PrintNumber("x").Should().Be(10);
+        Conversion.PrintNumber("mmxxii").Should().Be(2022);
+        Conversion.PrintNumber("mmmcmxcix").Should().Be(3999);
+        Conversion.PrintNumber("i").Should().Be(1);
+        Conversion.PrintNumber("x").Should().Be(10);
     }
     
     [Test]
     public void PrintNumber_Should_Return_CorrectValue_For_Mixed_RomanNumerals()
     {
-        conversionTest.PrintNumber("mMXiI").Should().Be(2012);
-        conversionTest.PrintNumber("mMmCMxcix").Should().Be(3999);
-        conversionTest.PrintNumber("DccXxix").Should().Be(729);
-        conversionTest.PrintNumber("DCcClXxXViii").Should().Be(888);
-        
+        Conversion.PrintNumber("mMXiI").Should().Be(2012);
+        Conversion.PrintNumber("mMmCMxcix").Should().Be(3999);
+        Conversion.PrintNumber("DccXxix").Should().Be(729);
+        Conversion.PrintNumber("DCcClXxXViii").Should().Be(888);
     }
     
     [Test]
     public void PrintNumber_Should_Return_ZERO_For_Wrong_RomanNumerals()
     {
-        conversionTest.PrintNumber("MMIIXX").Should().Be(0);
-        conversionTest.PrintNumber("mmiixx").Should().Be(0);
-        conversionTest.PrintNumber("VIIIV").Should().Be(0);
-        conversionTest.PrintNumber("iiiiiii").Should().Be(0);
+        Conversion.PrintNumber("MMIIXX").Should().Be(0);
+        Conversion.PrintNumber("mmiixx").Should().Be(0);
+        Conversion.PrintNumber("VIIIV").Should().Be(0);
+        Conversion.PrintNumber("iiiiiii").Should().Be(0);
     }
     
     [Test]
     public void PrintNumber_Should_Return_CorrectValue_For_Upper_RomanNumerals_With_Subtraction()
     {
-        conversionTest.PrintNumber("MMXXII-MMXXII").Should().Be(0);
-        conversionTest.PrintNumber("MMMCMXCIX-MMMCMXCIX").Should().Be(0);
-        conversionTest.PrintNumber("I-I").Should().Be(0);
-        conversionTest.PrintNumber("X-X").Should().Be(0);
+        Conversion.PrintNumber("MMXXII-MMXXII").Should().Be(0);
+        Conversion.PrintNumber("MMMCMXCIX-MMMCMXCIX").Should().Be(0);
+        Conversion.PrintNumber("I-I").Should().Be(0);
+        Conversion.PrintNumber("X-X").Should().Be(0);
     }
     
     [Test]
     public void PrintNumber_Should_Return_CorrectValue_For_Lower_RomanNumerals_With_Subtraction()
     {
-        conversionTest.PrintNumber("mmxxii-mmxxii").Should().Be(0);
-        conversionTest.PrintNumber("mmmcmxcix-mmmcmxcix").Should().Be(0);
-        conversionTest.PrintNumber("i-i").Should().Be(0);
-        conversionTest.PrintNumber("x-x").Should().Be(0);
+        Conversion.PrintNumber("mmxxii-mmxxii").Should().Be(0);
+        Conversion.PrintNumber("mmmcmxcix-mmmcmxcix").Should().Be(0);
+        Conversion.PrintNumber("i-i").Should().Be(0);
+        Conversion.PrintNumber("x-x").Should().Be(0);
     }
+    
     [Test]
     public void PrintNumber_Should_Return_ZERO_For_Wrong_Input()
     {
         
-        conversionTest.PrintNumber("").Should().Be(0);
-        conversionTest.PrintNumber("@#__").Should().Be(0);
-        conversionTest.PrintNumber("VC!@$#").Should().Be(0);
-        conversionTest.PrintNumber("hello").Should().Be(0);
-        conversionTest.PrintNumber("EXIT").Should().Be(0);
-        conversionTest.PrintNumber("exit").Should().Be(0);
+        Conversion.PrintNumber("").Should().Be(0);
+        Conversion.PrintNumber("@#__").Should().Be(0);
+        Conversion.PrintNumber("VC!@$#").Should().Be(0);
+        Conversion.PrintNumber("hello").Should().Be(0);
+        Conversion.PrintNumber("EXIT").Should().Be(0);
+        Conversion.PrintNumber("exit").Should().Be(0);
     }
     
     [Test]
     public void ExtractValue_Should_Return_CorrectValue_For_RomanNumerals()
     {
-        conversionTest.ExtractValue("MMXXII").Should().Be(2022);
-        conversionTest.ExtractValue("MMMCMXCIX").Should().Be(3999);
-        conversionTest.ExtractValue("I").Should().Be(1);
-        conversionTest.ExtractValue("X").Should().Be(10);
-        conversionTest.ExtractValue("DCCCLXXXVIII").Should().Be(888);
+        Conversion.ExtractValue("MMXXII").Should().Be(2022);
+        Conversion.ExtractValue("MMMCMXCIX").Should().Be(3999);
+        Conversion.ExtractValue("I").Should().Be(1);
+        Conversion.ExtractValue("X").Should().Be(10);
+        Conversion.ExtractValue("DCCCLXXXVIII").Should().Be(888);
     }
 
     [Test]
     public void RomanNumeralValidation_Should_Return_TRUE_For_Valid_MIXED_RomanNumeral()
     {
-        conversionTest.RomanNumeralValidation("MiX").Should().Be(true);
-        conversionTest.RomanNumeralValidation("MIX").Should().Be(true);
-        conversionTest.RomanNumeralValidation("I").Should().Be(true);
-        conversionTest.RomanNumeralValidation("II").Should().Be(true);
-        conversionTest.RomanNumeralValidation("MmXxII").Should().Be(true);
-        conversionTest.RomanNumeralValidation("viii").Should().Be(true);
+        Conversion.RomanNumeralValidation("MiX").Should().Be(true);
+        Conversion.RomanNumeralValidation("MIX").Should().Be(true);
+        Conversion.RomanNumeralValidation("I").Should().Be(true);
+        Conversion.RomanNumeralValidation("II").Should().Be(true);
+        Conversion.RomanNumeralValidation("MmXxII").Should().Be(true);
+        Conversion.RomanNumeralValidation("viii").Should().Be(true);
     }
     [Test]
+    
     public void RomanNumeralValidation_Should_Return_FALSE_For_inValid_MIXED_RomanNumeral()
     {
-        conversionTest.RomanNumeralValidation("MiiIiX").Should().Be(false);
-        conversionTest.RomanNumeralValidation("vvMIX").Should().Be(false);
-        conversionTest.RomanNumeralValidation("IiiiiII").Should().Be(false);
-        conversionTest.RomanNumeralValidation("MccccmXxII").Should().Be(false);
-        conversionTest.RomanNumeralValidation("viIii").Should().Be(false);
+        Conversion.RomanNumeralValidation("MiiIiX").Should().Be(false);
+        Conversion.RomanNumeralValidation("vvMIX").Should().Be(false);
+        Conversion.RomanNumeralValidation("IiiiiII").Should().Be(false);
+        Conversion.RomanNumeralValidation("MccccmXxII").Should().Be(false);
+        Conversion.RomanNumeralValidation("viIii").Should().Be(false);
     }
+    
     [Test]
     public void RomanNumeralValidation_Should_Return_FALSE_For_inValid_Input()
     {
-        conversionTest.RomanNumeralValidation("123").Should().Be(false);
-        conversionTest.RomanNumeralValidation("Hi!").Should().Be(false);
-        conversionTest.RomanNumeralValidation("__@#").Should().Be(false);
-        conversionTest.RomanNumeralValidation("Injection!").Should().Be(false);
-        conversionTest.RomanNumeralValidation("()*").Should().Be(false);
+        Conversion.RomanNumeralValidation("123").Should().Be(false);
+        Conversion.RomanNumeralValidation("Hi!").Should().Be(false);
+        Conversion.RomanNumeralValidation("__@#").Should().Be(false);
+        Conversion.RomanNumeralValidation("Injection!").Should().Be(false);
+        Conversion.RomanNumeralValidation("()*").Should().Be(false);
     }
 }
