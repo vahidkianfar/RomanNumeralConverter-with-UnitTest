@@ -1,4 +1,8 @@
-﻿namespace RomanNumeral;
+﻿using System.Diagnostics.Metrics;
+using System.Drawing;
+using System.Threading.Channels;
+
+namespace RomanNumeral;
 using System.Text.RegularExpressions;
 
 public class Conversion
@@ -16,9 +20,8 @@ public class Conversion
     public static int PrintNumber(string input)
     {
         if (RomanNumeralValidation(input.ToUpper()) && String.IsNullOrEmpty(input) == false)
-        {
             return ExtractValue(input.ToUpper());
-        }
+        
         return 0;
     }
     
@@ -29,7 +32,7 @@ public class Conversion
             "(CM|CD|D?C{0,3})" + // CM or CD or Zero to Three occurrence of D or C
             "(XC|XL|L?X{0,3})" + // XC or XL or Zero to Three occurrence of L or X
             "(IX|IV|V?I{0,3})$"; // IX or IV or Zero to Three occurrence of V or I
-        Regex checkByRegex = new Regex(regularExpression);
+        var checkByRegex = new Regex(regularExpression);
         return checkByRegex.IsMatch(input.ToUpper());
     }
 
@@ -39,14 +42,41 @@ public class Conversion
         for (int counter = 0; counter < input.Length; counter++)
         {
             if (counter + 1 < input.Length && mappingCharacters[input[counter]] < mappingCharacters[input[counter + 1]])
-            {
                 calculateNumber -= mappingCharacters[input[counter]];
-            }
             else
-            {
-                    calculateNumber += mappingCharacters[input[counter]];
-            }
+                calculateNumber += mappingCharacters[input[counter]];
         }
         return calculateNumber;
+    }
+
+    // public static string ConvertToTenBase(int input)
+    // {
+    //     string romanResult = input.ToString();
+    //     foreach (var romanChar in romanResult.Reverse())
+    //     {
+    //         Console.WriteLine(romanChar);
+    //             
+    //
+    //     }
+    //
+    //     return romanResult;
+    // }
+   
+    public static string ConvertToTenBase(int input) 
+    {
+        string[] romans = {"I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"};
+        int[] value = {1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
+        var index = romans.Length - 1;
+        var romanResult = string.Empty;
+        while(input>0)
+        {
+            while(value[index]<=input)
+            {
+                romanResult += romans[index];
+                input -= value[index];
+            }
+            index--;
+        }
+        return romanResult;
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Channels;
 using NUnit.Framework;
 using FluentAssertions;
 using RomanNumeral;
@@ -9,12 +10,22 @@ public class Tests
 {
     [SetUp]
     public void Setup() { }
-    
+    [Test]
+    public void ConvertToTenBase_Should_Return_CorrectValue()
+    {
+         Conversion.ConvertToTenBase(9).Should().Be("IX");
+         Conversion.ConvertToTenBase(2022).Should().Be("MMXXII");
+         Conversion.ConvertToTenBase(888).Should().Be("DCCCLXXXVIII");
+         Conversion.ConvertToTenBase(3000).Should().Be("MMM");
+         Conversion.ConvertToTenBase(419).Should().Be("CDXIX");
+    }
     [Test]
     public void ExtractValue_Should_Throw_Exception_For_Input_That_Doesnt_Exist_In_Dictionary()
     {
         Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() => Conversion.ExtractValue("bf"));
-        Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() => Conversion.ExtractValue("i")); //LowerCase of I doesn't exist in Dictionary
+        
+        //LowerCase of 'I' doesn't exist in Dictionary
+        Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() => Conversion.ExtractValue("i")); 
     }
     
     [Test]
@@ -142,4 +153,5 @@ public class Tests
         Conversion.RomanNumeralValidation("Injection!").Should().Be(false);
         Conversion.RomanNumeralValidation("()*").Should().Be(false);
     }
+    
 }
