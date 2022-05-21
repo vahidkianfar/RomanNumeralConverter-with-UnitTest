@@ -13,11 +13,11 @@ public class Tests
     [Test]
     public void ConvertToTenBase_Should_Return_CorrectValue()
     {
-         Conversion.ConvertToTenBase(9).Should().Be("IX");
-         Conversion.ConvertToTenBase(2022).Should().Be("MMXXII");
-         Conversion.ConvertToTenBase(888).Should().Be("DCCCLXXXVIII");
-         Conversion.ConvertToTenBase(3000).Should().Be("MMM");
-         Conversion.ConvertToTenBase(419).Should().Be("CDXIX");
+         Conversion.ConvertToRomanNumeral(9).Should().Be("IX");
+         Conversion.ConvertToRomanNumeral(2022).Should().Be("MMXXII");
+         Conversion.ConvertToRomanNumeral(888).Should().Be("DCCCLXXXVIII");
+         Conversion.ConvertToRomanNumeral(3000).Should().Be("MMM");
+         Conversion.ConvertToRomanNumeral(419).Should().Be("CDXIX");
     }
     [Test]
     public void ExtractValue_Should_Throw_Exception_For_Input_That_Doesnt_Exist_In_Dictionary()
