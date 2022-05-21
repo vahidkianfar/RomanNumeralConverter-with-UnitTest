@@ -2,6 +2,7 @@ There are Three different Methods:
 1. RomanNumeralValidation : "Using RegEx for Validity Check of the input".
 2. ExtractValue : "Extract value of the each Roman Characters from a Dictionary and return the calculated number.
 4. PrintNumber : "Print the Final Number".
+5. ConvertToRomanNumeral: "Convert the given integer to Roman Numerals"
 
 Convert Roman Numerals into Base ten number system.
 
