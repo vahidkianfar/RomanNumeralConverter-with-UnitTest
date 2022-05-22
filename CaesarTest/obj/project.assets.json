@@ -925,6 +925,12 @@
       "RomanNumeral/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "FluentAssertions": "6.7.0",
+          "Microsoft.NET.Test.Sdk": "17.2.0",
+          "NUnit": "3.13.3",
+          "NUnit3TestAdapter": "4.2.1"
+        },
         "compile": {
           "bin/placeholder/RomanNumeral.dll": {}
         },
