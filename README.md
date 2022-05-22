@@ -1,8 +1,7 @@
 There are two Classes:
 
-1.TenBaseToRoman: "Convert Integer to Roman numeral".
-
-2.Conversion: "Convert Roman numeral to Integer".
+1. TenBaseToRoman: "Convert Integer to Roman numeral".
+2. Conversion: "Convert Roman numeral to Integer".
 
 There are four Methods:
 
