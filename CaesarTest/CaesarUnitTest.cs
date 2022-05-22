@@ -24,6 +24,7 @@ public class Tests
     [Test]
     public void ConvertToRomanNumeral_Should_Throws_Exception_For_Invalid_Integer()
     {
+        //Valid integer to roman numeral is in range (1,3999)
         Assert.Throws<InvalidConstraintException>(() => TenBaseToRoman.ConvertToRomanNumeral(4000));
         Assert.Throws<InvalidConstraintException>(() => TenBaseToRoman.ConvertToRomanNumeral(0));
         Assert.Throws<InvalidConstraintException>(() => TenBaseToRoman.ConvertToRomanNumeral(-10));
