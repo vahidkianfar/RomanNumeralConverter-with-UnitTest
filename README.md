@@ -1,4 +1,9 @@
-There are Four different Methods:
+There are two Classes:
+
+1.TenBaseToRoman: "Convert Integer input to Roman numeral"
+2.Conversion: "Convert Roman numeral to Integer"
+
+There are four Methods:
 
 1. RomanNumeralValidation : "Using RegEx to check validity of the input".
 2. ExtractValue : "Extract value of the each Roman Characters from a Dictionary and return the calculated number.
