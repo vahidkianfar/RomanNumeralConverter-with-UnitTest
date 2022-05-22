@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 public class Conversion
 {
-    static readonly Dictionary<char, int> mappingCharacters = new()
+    static readonly Dictionary<char, int> MappingCharacters = new()
     {   { 'I', 1 },
         { 'V', 5 },
         { 'X', 10 },
@@ -14,7 +14,8 @@ public class Conversion
         { 'D', 500 },
         { 'M', 1000 }
     };
-    
+    private static readonly string[] Romans = {"I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"};
+    private static readonly int[] Value = {1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
     public static int PrintNumber(string input)
     {
         if (RomanNumeralValidation(input.ToUpper()) && String.IsNullOrEmpty(input) == false)
@@ -39,10 +40,10 @@ public class Conversion
         int calculateNumber = 0;
         for (int counter = 0; counter < input.Length; counter++)
         {
-            if (counter + 1 < input.Length && mappingCharacters[input[counter]] < mappingCharacters[input[counter + 1]])
-                calculateNumber -= mappingCharacters[input[counter]];
+            if (counter + 1 < input.Length && MappingCharacters[input[counter]] < MappingCharacters[input[counter + 1]])
+                calculateNumber -= MappingCharacters[input[counter]];
             else
-                calculateNumber += mappingCharacters[input[counter]];
+                calculateNumber += MappingCharacters[input[counter]];
         }
         return calculateNumber;
     }
@@ -51,16 +52,14 @@ public class Conversion
     {
         //This Method Needs Some REFACTORING.
         if (input is <= 0 or > 3999) throw new InvalidConstraintException();
-        string[] romans = {"I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"};
-        int[] value = {1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
-        var index = romans.Length - 1;
+        var index = Romans.Length - 1;
         var romanResult = string.Empty;
         while(input>0)
         {
-            while(value[index]<=input)
+            while(Value[index]<=input)
             {
-                romanResult += romans[index];
-                input -= value[index];
+                romanResult += Romans[index];
+                input -= Value[index];
             }
             index--;
         }
