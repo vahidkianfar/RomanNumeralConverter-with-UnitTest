@@ -8,7 +8,12 @@ public class TenBaseToRoman
     public static string ConvertToRomanNumeral(int input) 
     {
         //This Method needs some REFACTORING.
-        if (input is <= 0 or > 3999) throw new InvalidConstraintException();
+        if (input is <= 0 or > 3999) throw new ArgumentException
+        {
+            HelpLink = null,
+            HResult = 0,
+            Source = null
+        };
         var index = Romans.Length - 1;
         var romanResult = string.Empty;
         while(input>0)
