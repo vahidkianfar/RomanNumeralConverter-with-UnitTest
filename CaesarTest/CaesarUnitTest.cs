@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using System.Threading.Channels;
 using NUnit.Framework;
 using FluentAssertions;
@@ -19,6 +20,13 @@ public class Tests
          Conversion.ConvertToRomanNumeral(3000).Should().Be("MMM");
          Conversion.ConvertToRomanNumeral(419).Should().Be("CDXIX");
          Conversion.ConvertToRomanNumeral(3999).Should().Be("MMMCMXCIX");
+    }
+    [Test]
+    public void ConvertToTenBase_Should_Throws_Exception_For_Invalid_Integer()
+    {
+        Assert.Throws<InvalidConstraintException>(() => Conversion.ConvertToRomanNumeral(4000));
+        Assert.Throws<InvalidConstraintException>(() => Conversion.ConvertToRomanNumeral(0));
+        Assert.Throws<InvalidConstraintException>(() => Conversion.ConvertToRomanNumeral(-10));
     }
     [Test]
     public void ExtractValue_Should_Throw_Exception_For_Input_That_Doesnt_Exist_In_Dictionary()
