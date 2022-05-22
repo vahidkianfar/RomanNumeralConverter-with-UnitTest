@@ -1,8 +1,4 @@
-﻿using System.Diagnostics.Metrics;
-using System.Drawing;
-using System.Threading.Channels;
-
-namespace RomanNumeral;
+﻿namespace RomanNumeral;
 using System.Text.RegularExpressions;
 
 public class Conversion
@@ -36,6 +32,13 @@ public class Conversion
         return checkByRegex.IsMatch(input.ToUpper());
     }
 
+    public static bool IntegerToRomanValidation(int input)
+    {
+        const string regularExpressionInt = "^([1-9][0-9]{0,3}|3999)$";
+        var checkByRegex = new Regex(regularExpressionInt);
+        return checkByRegex.IsMatch(input.ToString());
+    }
+
     public static int ExtractValue(string input)
     {
         int calculateNumber = 0;
@@ -53,6 +56,7 @@ public class Conversion
     public static string ConvertToRomanNumeral(int input) 
     {
         //This Method Needs Some REFACTORING.
+        if (!IntegerToRomanValidation(input)) return "Integer is not valid!";
         string[] romans = {"I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"};
         int[] value = {1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
         var index = romans.Length - 1;
@@ -66,6 +70,6 @@ public class Conversion
             }
             index--;
         }
-        return romanResult;
+        return !RomanNumeralValidation(romanResult) ? "Integer is not valid!" : romanResult;
     }
 }

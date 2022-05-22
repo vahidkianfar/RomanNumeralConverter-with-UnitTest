@@ -18,6 +18,7 @@ public class Tests
          Conversion.ConvertToRomanNumeral(888).Should().Be("DCCCLXXXVIII");
          Conversion.ConvertToRomanNumeral(3000).Should().Be("MMM");
          Conversion.ConvertToRomanNumeral(419).Should().Be("CDXIX");
+         Conversion.ConvertToRomanNumeral(3999).Should().Be("MMMCMXCIX");
     }
     [Test]
     public void ExtractValue_Should_Throw_Exception_For_Input_That_Doesnt_Exist_In_Dictionary()
