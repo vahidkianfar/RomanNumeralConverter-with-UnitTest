@@ -12,21 +12,21 @@ public class Tests
     [SetUp]
     public void Setup() { }
     [Test]
-    public void ConvertToTenBase_Should_Return_CorrectValue()
+    public void ConvertToRomanNumeral_Should_Return_CorrectValue()
     {
-         Conversion.ConvertToRomanNumeral(9).Should().Be("IX");
-         Conversion.ConvertToRomanNumeral(2022).Should().Be("MMXXII");
-         Conversion.ConvertToRomanNumeral(888).Should().Be("DCCCLXXXVIII");
-         Conversion.ConvertToRomanNumeral(3000).Should().Be("MMM");
-         Conversion.ConvertToRomanNumeral(419).Should().Be("CDXIX");
-         Conversion.ConvertToRomanNumeral(3999).Should().Be("MMMCMXCIX");
+         TenBaseToRoman.ConvertToRomanNumeral(9).Should().Be("IX");
+         TenBaseToRoman.ConvertToRomanNumeral(2022).Should().Be("MMXXII");
+         TenBaseToRoman.ConvertToRomanNumeral(888).Should().Be("DCCCLXXXVIII");
+         TenBaseToRoman.ConvertToRomanNumeral(3000).Should().Be("MMM");
+         TenBaseToRoman.ConvertToRomanNumeral(419).Should().Be("CDXIX");
+         TenBaseToRoman.ConvertToRomanNumeral(3999).Should().Be("MMMCMXCIX");
     }
     [Test]
-    public void ConvertToTenBase_Should_Throws_Exception_For_Invalid_Integer()
+    public void ConvertToRomanNumeral_Should_Throws_Exception_For_Invalid_Integer()
     {
-        Assert.Throws<InvalidConstraintException>(() => Conversion.ConvertToRomanNumeral(4000));
-        Assert.Throws<InvalidConstraintException>(() => Conversion.ConvertToRomanNumeral(0));
-        Assert.Throws<InvalidConstraintException>(() => Conversion.ConvertToRomanNumeral(-10));
+        Assert.Throws<InvalidConstraintException>(() => TenBaseToRoman.ConvertToRomanNumeral(4000));
+        Assert.Throws<InvalidConstraintException>(() => TenBaseToRoman.ConvertToRomanNumeral(0));
+        Assert.Throws<InvalidConstraintException>(() => TenBaseToRoman.ConvertToRomanNumeral(-10));
     }
     [Test]
     public void ExtractValue_Should_Throw_Exception_For_Input_That_Doesnt_Exist_In_Dictionary()
