@@ -14,20 +14,20 @@ public class Tests
     [Test]
     public void ConvertToRomanNumeral_Should_Return_CorrectValue()
     {
-         TenBaseToRoman.ConvertToRomanNumeral(9).Should().Be("IX");
-         TenBaseToRoman.ConvertToRomanNumeral(2022).Should().Be("MMXXII");
-         TenBaseToRoman.ConvertToRomanNumeral(888).Should().Be("DCCCLXXXVIII");
-         TenBaseToRoman.ConvertToRomanNumeral(3000).Should().Be("MMM");
-         TenBaseToRoman.ConvertToRomanNumeral(419).Should().Be("CDXIX");
-         TenBaseToRoman.ConvertToRomanNumeral(3999).Should().Be("MMMCMXCIX");
+         ArabicToRoman.ConvertToRomanNumeral(9).Should().Be("IX");
+         ArabicToRoman.ConvertToRomanNumeral(2022).Should().Be("MMXXII");
+         ArabicToRoman.ConvertToRomanNumeral(888).Should().Be("DCCCLXXXVIII");
+         ArabicToRoman.ConvertToRomanNumeral(3000).Should().Be("MMM");
+         ArabicToRoman.ConvertToRomanNumeral(419).Should().Be("CDXIX");
+         ArabicToRoman.ConvertToRomanNumeral(3999).Should().Be("MMMCMXCIX");
     }
     [Test]
     public void ConvertToRomanNumeral_Should_Throws_Exception_For_Invalid_Integer()
     {
         //Valid integer to roman numeral is in range (1,3999)
-        Assert.Throws<ArgumentException>(() => TenBaseToRoman.ConvertToRomanNumeral(4000));
-        Assert.Throws<ArgumentException>(() => TenBaseToRoman.ConvertToRomanNumeral(0));
-        Assert.Throws<ArgumentException>(() => TenBaseToRoman.ConvertToRomanNumeral(-10));
+        Assert.Throws<ArgumentException>(() => ArabicToRoman.ConvertToRomanNumeral(4000));
+        Assert.Throws<ArgumentException>(() => ArabicToRoman.ConvertToRomanNumeral(0));
+        Assert.Throws<ArgumentException>(() => ArabicToRoman.ConvertToRomanNumeral(-10));
     }
     [Test]
     public void ExtractValue_Should_Throw_Exception_For_Input_That_Doesnt_Exist_In_Dictionary()
